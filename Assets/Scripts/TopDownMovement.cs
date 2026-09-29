@@ -9,7 +9,7 @@ public class TopDownMovement : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private float currentSpeed = 5f;
-    private Vector2 movement;
+    public Vector2 movement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

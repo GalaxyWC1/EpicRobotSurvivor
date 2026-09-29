@@ -8,6 +8,7 @@ public class Stats : MonoBehaviour
     [HideInInspector] public float currentHealth;
     [Range(100, 10000)] public float maxMana;
     [HideInInspector] public float currentMana;
+    [HideInInspector] public int score;
 
     public int xp;
 
