@@ -5,12 +5,16 @@ using UnityEngine.InputSystem.Controls;
 public class Stats : MonoBehaviour
 {
     [Range(1,1000)] public float maxHealth;
-    [HideInInspector] public float currentHealth;
+    public float currentHealth;
     [Range(100, 10000)] public float maxMana;
-    [HideInInspector] public float currentMana;
-    [HideInInspector] public int score;
+    public float currentMana;
+    public int score;
 
     public int xp;
+
+    [Header("Movement")]
+
+    public float moveSpeed;
 
     [Header("Attack")]
 
@@ -18,6 +22,8 @@ public class Stats : MonoBehaviour
     public float defense;
 
     [Header("Miscellaneaous")]
+
+    public float attackTimer;
 
     public bool isDead;
 
