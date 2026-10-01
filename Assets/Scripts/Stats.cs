@@ -10,7 +10,8 @@ public class Stats : MonoBehaviour
     public float currentMana;
     public int score;
 
-    public int xp;
+    public float xp;
+    [Range(100, 10000)] public float maxXp;
 
     [Header("Movement")]
 

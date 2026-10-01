@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Stats))]
 public class EnemyController : MonoBehaviour
@@ -14,6 +15,7 @@ public class EnemyController : MonoBehaviour
     public Vector2 meleeSize;
     public Vector2 meleePos;
     private float lastAttack;
+    public Image HealthBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -21,12 +23,13 @@ public class EnemyController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
         lastAttack = Time.realtimeSinceStartup;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        HealthBar.fillAmount = stats.currentHealth / stats.maxHealth;
+
         if(stats.currentHealth <= 0)
         {
             Destroy(gameObject);
@@ -45,7 +48,7 @@ public class EnemyController : MonoBehaviour
 
         movement = (Target.transform.position - transform.position);
 
-        rb2d.linearVelocity = movement * stats.moveSpeed;
+        rb2d.linearVelocity = movement.normalized * stats.moveSpeed;
     }
 
     private void OnDrawGizmos()

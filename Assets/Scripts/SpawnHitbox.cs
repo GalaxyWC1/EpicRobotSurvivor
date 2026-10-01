@@ -28,7 +28,8 @@ public class SpawnHitbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer)
+
+        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer || stats.currentHealth>0)
         {
             lastAttack = Time.realtimeSinceStartup;
             PlayerAttack();
