@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer)
+        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer && Time.timeScale > 0)
         {
             lastAttack = Time.realtimeSinceStartup;
             RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3)meleePos, meleeSize, 0, Vector2.zero, 0, attackLayer);

@@ -20,6 +20,10 @@ public class TopDownMovement : MonoBehaviour
         stats = GetComponent<Stats>();
     }
 
+    private void Start()
+    {
+        UpgradeManager.Instance.HideUpgradeSelection();
+    }
     // Update is called once per frame
     void Update()
     {

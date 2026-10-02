@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef92716837b2dd14daf09cf359e822cc, type: 3}
+  m_Name: attackSpeedIncrease
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades
+  UpgradeImage: {fileID: 0}
+  upgradeText: Subtract 0.5 seconds from your attack timer
+  effectType: 2
+  effectValue: 0.5
+  isUnique: 0

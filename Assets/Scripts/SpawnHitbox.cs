@@ -29,7 +29,7 @@ public class SpawnHitbox : MonoBehaviour
     void Update()
     {
 
-        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer || stats.currentHealth>0)
+        if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer && stats.currentHealth>0 && Time.timeScale > 0)
         {
             lastAttack = Time.realtimeSinceStartup;
             PlayerAttack();
