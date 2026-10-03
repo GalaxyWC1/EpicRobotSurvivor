@@ -16,6 +16,7 @@ public class UpgradeManager : MonoBehaviour
     List<Upgrades> alreadySelectedUpgrades = new List<Upgrades>();
 
     public static UpgradeManager Instance;
+    public GameObject Player;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class UpgradeManager : MonoBehaviour
         RandomizeUpgrades();
     }
 
-    void RandomizeUpgrades()
+    public void RandomizeUpgrades()
     {
         if (upgradeOne != null) Destroy(upgradeOne);
         if (upgradeTwo != null) Destroy(upgradeTwo);
@@ -70,7 +71,8 @@ public class UpgradeManager : MonoBehaviour
 
     public void SelectUpgrade(Upgrades selectedUpgrade)
     {
-        if(alreadySelectedUpgrades.Contains(selectedUpgrade))
+        Debug.Log("select");
+        if (alreadySelectedUpgrades.Contains(selectedUpgrade))
         {
             alreadySelectedUpgrades.Add(selectedUpgrade);
         }

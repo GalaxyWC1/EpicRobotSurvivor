@@ -33,6 +33,13 @@ public class TopDownMovement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
+        if (stats.xp >= stats.maxXp)
+        {
+            stats.xp -= stats.maxXp;
+            UpgradeManager.Instance.RandomizeUpgrades();
+            Time.timeScale = 0;
+        }
+
         rb2d.linearVelocity = movement * stats.moveSpeed;
         if (movement.x > 0)
         {

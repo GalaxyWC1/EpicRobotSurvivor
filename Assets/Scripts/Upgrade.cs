@@ -15,11 +15,20 @@ public class Upgrade : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //Debug.Log("select");
         UpgradeManager.Instance.SelectUpgrade(upgradeInfo);
 
-        if(upgradeInfo.effectType = UpgradeEffect.DamageIncrease)
+        if (upgradeInfo.effectType == UpgradeEffect.DamageIncrease)
         {
-
+            UpgradeManager.Instance.Player.GetComponent<Stats>().damage += upgradeInfo.effectValue;
+        }
+        else if (upgradeInfo.effectType == UpgradeEffect.AttackSpeedIncrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().attackTimer -= upgradeInfo.effectValue;
+        }
+        else if (upgradeInfo.effectType == UpgradeEffect.HealthIncrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().maxHealth += upgradeInfo.effectValue;
         }
     }
 }

@@ -899,7 +899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650139832}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.45967, y: 0.07726, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -907,7 +907,7 @@ Transform:
   - {fileID: 2053923484}
   - {fileID: 946170721}
   - {fileID: 1446039152}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1232411848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674205406
 GameObject:
@@ -1312,6 +1312,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a43333e15fe43b46aa5e37969cfff8c, type: 2}
   - {fileID: 11400000, guid: ddee2548e34a405488fec0771e6f877b, type: 2}
   - {fileID: 11400000, guid: cd2c8831f405d2946b79b6ac29cb3917, type: 2}
+  Player: {fileID: 1232411843}
 --- !u!4 &1044342807
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,7 +1651,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 650139833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1232411849
@@ -1670,7 +1672,7 @@ MonoBehaviour:
   maxMana: 100
   currentMana: 0
   score: 0
-  xp: 0
+  xp: 90
   maxXp: 100
   moveSpeed: 5
   damage: 10
@@ -1983,4 +1985,3 @@ SceneRoots:
   - {fileID: 1232411848}
   - {fileID: 352579733}
   - {fileID: 1044342807}
-  - {fileID: 650139833}
