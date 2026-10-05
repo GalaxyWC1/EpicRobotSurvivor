@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,7 @@ public class SpawnHitbox : MonoBehaviour
     private Stats stats;
 
     private float lastAttack;
+    private Animator anim;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +24,7 @@ public class SpawnHitbox : MonoBehaviour
     {
         tdm = GetComponent<TopDownMovement>();
         stats = GetComponent<Stats>();
+        anim = GetComponent<Animator>();
         lastAttack = Time.realtimeSinceStartup;
     }
 
@@ -32,7 +35,7 @@ public class SpawnHitbox : MonoBehaviour
         if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer && stats.currentHealth>0 && Time.timeScale > 0)
         {
             lastAttack = Time.realtimeSinceStartup;
-            PlayerAttack();
+            anim.SetTrigger("Attacking");
         }
     }
 
@@ -48,23 +51,32 @@ public class SpawnHitbox : MonoBehaviour
         }
     }
 
+
     public void PlayerAttack()
     {
+        RaycastHit2D[] hits;
         if (tdm.lookDirection.x > 0)
         {
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3)meleePos, meleeSize, 0, Vector2.zero, 0, attackLayer);
-            if (hit)
+
+            hits = Physics2D.BoxCastAll(transform.position + (Vector3)meleePos, meleeSize, 0, Vector2.zero, 0, attackLayer);
+            if(hits != null)
             {
-                Damage(hit);
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    Damage(hits[i]);
+                }
             }
 
         }
         else if (tdm.lookDirection.x < 0)
         {
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position + (Vector3)(Vector2.Scale(meleePos, new Vector2(-1, -1))), meleeSize, 0, Vector2.zero, 0, attackLayer);
-            if (hit)
+            hits = Physics2D.BoxCastAll(transform.position - (Vector3)meleePos, meleeSize, 0, Vector2.zero, 0, attackLayer);
+            if (hits != null)
             {
-                Damage(hit);
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    Damage(hits[i]);
+                }
             }
         }
 
@@ -73,6 +85,6 @@ public class SpawnHitbox : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + (Vector3)meleePos, meleeSize);
-        Gizmos.DrawWireCube(transform.position + (Vector3)(Vector2.Scale(meleePos, new Vector2(-1, -1))), meleeSize);
+        Gizmos.DrawWireCube(transform.position - (Vector3)meleePos, meleeSize);
     }
 }

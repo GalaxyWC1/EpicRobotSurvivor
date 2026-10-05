@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: attackSpeedIncrease
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   UpgradeImage: {fileID: 0}
-  upgradeText: Subtract 0.5 seconds from your attack timer
+  upgradeText: Increase attack speed by 20%
   effectType: 2
-  effectValue: 0.5
+  effectValue: 0.8
   isUnique: 0

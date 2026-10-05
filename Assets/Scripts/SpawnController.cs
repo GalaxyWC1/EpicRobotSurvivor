@@ -21,7 +21,7 @@ public class SpawnController : MonoBehaviour
 
         GameObject newEnemy = Instantiate(Level1);
         newEnemy.GetComponent<EnemyController>().Target = Player;
-        newEnemy.transform.position = position;
+        newEnemy.transform.position = position + Player.transform.position;
         newEnemy.transform.parent = transform;
     }
 
@@ -51,7 +51,15 @@ public class SpawnController : MonoBehaviour
         if((Time.realtimeSinceStartup-lastSpawn)>spawnTime)
         {
             lastSpawn = Time.realtimeSinceStartup;
-            SpawnEnemy();
+
+            int Total = Random.Range(1, 5);
+            int spawned = 0;
+
+            while (spawned < Total)
+            {
+                SpawnEnemy();
+                spawned += 1;
+            }
         }
     }
 

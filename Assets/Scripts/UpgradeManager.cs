@@ -23,16 +23,14 @@ public class UpgradeManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        RandomizeUpgrades();
-    }
-
     public void RandomizeUpgrades()
     {
+
         if (upgradeOne != null) Destroy(upgradeOne);
         if (upgradeTwo != null) Destroy(upgradeTwo);
         if (upgradeThree != null) Destroy(upgradeThree);
+
+        upgradeSelectionUI.transform.position = Player.transform.position;
 
         List<Upgrades> randomizedUpgrades = new List<Upgrades>();
 
@@ -71,13 +69,26 @@ public class UpgradeManager : MonoBehaviour
 
     public void SelectUpgrade(Upgrades selectedUpgrade)
     {
-        Debug.Log("select");
         if (alreadySelectedUpgrades.Contains(selectedUpgrade))
         {
             alreadySelectedUpgrades.Add(selectedUpgrade);
         }
 
-        HideUpgradeSelection();
+        if (selectedUpgrade.effectType == UpgradeEffect.DamageIncrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().damage += selectedUpgrade.effectValue;
+        }
+        else if (selectedUpgrade.effectType == UpgradeEffect.AttackSpeedIncrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().attackTimer *= selectedUpgrade.effectValue;
+        }
+        else if (selectedUpgrade.effectType == UpgradeEffect.HealthIncrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().maxHealth += selectedUpgrade.effectValue;
+            UpgradeManager.Instance.Player.GetComponent<Stats>().currentHealth += selectedUpgrade.effectValue;
+        }
+
+            HideUpgradeSelection();
         Time.timeScale = 1;
     }
 

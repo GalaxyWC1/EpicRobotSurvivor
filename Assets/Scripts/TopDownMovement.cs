@@ -8,6 +8,7 @@ public class TopDownMovement : MonoBehaviour
     private Rigidbody2D rb2d;
     private float currentSpeed = 5f;
     private Vector2 movement;
+    private Animator anim;
 
     public Vector2 lookDirection;
 
@@ -18,6 +19,7 @@ public class TopDownMovement : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         stats = GetComponent<Stats>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -44,9 +46,11 @@ public class TopDownMovement : MonoBehaviour
         if (movement.x > 0)
         {
             lookDirection = new Vector2(1, 0);
+            anim.SetFloat("Direction", 1);
         }else if (movement.x < 0)
         {
             lookDirection = new Vector2(-1, 0);
+            anim.SetFloat("Direction", -1);
         }
     }
 
