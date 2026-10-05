@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
 
@@ -60,6 +61,15 @@ public class SpawnController : MonoBehaviour
                 SpawnEnemy();
                 spawned += 1;
             }
+        }
+
+        if (Time.realtimeSinceStartup > 60 && spawnTime == 5)
+        {
+            spawnTime = 4;
+        }
+        else if (Time.realtimeSinceStartup > 120 && spawnTime == 4)
+        {
+            spawnTime = 3;
         }
     }
 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef92716837b2dd14daf09cf359e822cc, type: 3}
-  m_Name: attackSpeedIncrease
+  m_Name: giveField
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   UpgradeImage: {fileID: 0}
-  upgradeText: Increase Spear attack speed by 20%
-  effectType: 2
-  effectValue: 1.2
-  isUnique: 0
+  upgradeText: Spawn a field every 2 seconds which damages enemies.
+  effectType: 4
+  effectValue: 0
+  isUnique: 1

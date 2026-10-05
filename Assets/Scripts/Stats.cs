@@ -17,10 +17,20 @@ public class Stats : MonoBehaviour
 
     public float moveSpeed;
 
-    [Header("Attack")]
+    [Header("Spear")]
 
     public float damage;
-    public float defense;
+    public Vector2 meleeSize;
+    public Vector2 meleePos;
+
+    [Header("Field")]
+    public bool hasField;
+    public float fieldDamage;
+    public float fieldInterval;
+
+    public Vector2 fieldSize;
+    public Vector2 fieldSize2;
+    public Vector2 fieldSize3;
 
     [Header("Miscellaneaous")]
 
@@ -32,5 +42,14 @@ public class Stats : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position + (Vector3)meleePos, meleeSize);
+        Gizmos.DrawWireCube(transform.position - (Vector3)meleePos, meleeSize);
+        Gizmos.DrawWireCube(transform.position, fieldSize);
+        Gizmos.DrawWireCube(transform.position, fieldSize2);
+        Gizmos.DrawWireCube(transform.position, fieldSize3);
     }
 }

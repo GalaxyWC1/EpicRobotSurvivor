@@ -16,4 +16,7 @@ public enum UpgradeEffect
     DamageIncrease,
     HealthIncrease,
     AttackSpeedIncrease,
+    CooldownDecrease,
+    GiveField,
+
 }

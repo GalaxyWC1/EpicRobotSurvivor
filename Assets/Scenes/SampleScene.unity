@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnController
   Player: {fileID: 1232411843}
   Level1: {fileID: 2668687573835743271, guid: 2f1e17972be8c104da34969c7ac2a43c, type: 3}
-  spawnArea: {x: 30, y: 20}
+  spawnArea: {x: 60, y: 35}
   spawnTime: 5
 --- !u!4 &352579733
 Transform:
@@ -561,7 +561,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -900,8 +900,8 @@ Transform:
   m_GameObject: {fileID: 650139832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 19}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2053923484}
@@ -1312,6 +1312,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a43333e15fe43b46aa5e37969cfff8c, type: 2}
   - {fileID: 11400000, guid: ddee2548e34a405488fec0771e6f877b, type: 2}
   - {fileID: 11400000, guid: cd2c8831f405d2946b79b6ac29cb3917, type: 2}
+  - {fileID: 11400000, guid: bff0554e0dd0c264aa7efa96b6a0c105, type: 2}
+  - {fileID: 11400000, guid: 0345e7c9ac02769419e18e269345db66, type: 2}
   Player: {fileID: 1232411843}
 --- !u!4 &1044342807
 Transform:
@@ -1676,7 +1678,14 @@ MonoBehaviour:
   maxXp: 100
   moveSpeed: 5
   damage: 10
-  defense: 0
+  meleeSize: {x: 6.5, y: 2}
+  meleePos: {x: 2, y: 0}
+  hasField: 0
+  fieldDamage: 5
+  fieldInterval: 2
+  fieldSize: {x: 3, y: 3}
+  fieldSize2: {x: 3.8, y: 3.8}
+  fieldSize3: {x: 5, y: 5}
   attackTimer: 1
   isDead: 0
 --- !u!61 &1232411850
@@ -1740,8 +1749,7 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 8
-  meleeSize: {x: 6.5, y: 2}
-  meleePos: {x: 2, y: 0}
+  fieldObject: {fileID: 7013702662785493870, guid: 29dcf5a5e0b3da940becb09e407d8ac1, type: 3}
 --- !u!95 &1232411852
 Animator:
   serializedVersion: 7

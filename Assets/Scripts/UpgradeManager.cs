@@ -11,7 +11,9 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] Transform upgradePositionThree;
     [SerializeField] List<Upgrades> deck;
 
-    GameObject upgradeOne, upgradeTwo, upgradeThree;
+    GameObject upgradeOne;
+    GameObject upgradeTwo;
+    GameObject upgradeThree;
 
     List<Upgrades> alreadySelectedUpgrades = new List<Upgrades>();
 
@@ -35,7 +37,7 @@ public class UpgradeManager : MonoBehaviour
         List<Upgrades> randomizedUpgrades = new List<Upgrades>();
 
         List<Upgrades> availableUpgrades = new List<Upgrades>(deck);
-        availableUpgrades.RemoveAll(upgrade => upgrade.isUnique && alreadySelectedUpgrades.Contains(upgrade));
+        availableUpgrades.RemoveAll(upgrade => upgrade.isUnique == true && alreadySelectedUpgrades.Contains(upgrade));
 
         if(availableUpgrades.Count < 3)
         {
@@ -45,16 +47,16 @@ public class UpgradeManager : MonoBehaviour
 
         while(randomizedUpgrades.Count < 3)
         {
-            Upgrades randomCard = availableUpgrades[Random.Range(0, availableUpgrades.Count)];
-            if(!randomizedUpgrades.Contains(randomCard))
+            Upgrades randomUpgrade = availableUpgrades[Random.Range(0, availableUpgrades.Count)];
+            if(!randomizedUpgrades.Contains(randomUpgrade))
             {
-                randomizedUpgrades.Add(randomCard);
+                randomizedUpgrades.Add(randomUpgrade);
             }
         }
 
         upgradeOne = InstantiateUpgrade(randomizedUpgrades[0], upgradePositionOne);
-        upgradeOne = InstantiateUpgrade(randomizedUpgrades[1], upgradePositionTwo);
-        upgradeOne = InstantiateUpgrade(randomizedUpgrades[2], upgradePositionThree);
+        upgradeTwo = InstantiateUpgrade(randomizedUpgrades[1], upgradePositionTwo);
+        upgradeThree = InstantiateUpgrade(randomizedUpgrades[2], upgradePositionThree);
 
         ShowUpgradeSelection();
     }
@@ -80,15 +82,23 @@ public class UpgradeManager : MonoBehaviour
         }
         else if (selectedUpgrade.effectType == UpgradeEffect.AttackSpeedIncrease)
         {
-            UpgradeManager.Instance.Player.GetComponent<Stats>().attackTimer *= selectedUpgrade.effectValue;
+            UpgradeManager.Instance.Player.GetComponent<Animator>().SetFloat("AttackSpeed", UpgradeManager.Instance.Player.GetComponent<Animator>().speed * selectedUpgrade.effectValue);
         }
         else if (selectedUpgrade.effectType == UpgradeEffect.HealthIncrease)
         {
             UpgradeManager.Instance.Player.GetComponent<Stats>().maxHealth += selectedUpgrade.effectValue;
             UpgradeManager.Instance.Player.GetComponent<Stats>().currentHealth += selectedUpgrade.effectValue;
         }
+        else if (selectedUpgrade.effectType == UpgradeEffect.CooldownDecrease)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().attackTimer *= selectedUpgrade.effectValue;
+        }
+        else if (selectedUpgrade.effectType == UpgradeEffect.GiveField)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().hasField = true;
+        }
 
-            HideUpgradeSelection();
+        HideUpgradeSelection();
         Time.timeScale = 1;
     }
 
