@@ -27,6 +27,7 @@ public class Stats : MonoBehaviour
     public bool hasField;
     public float fieldDamage;
     public float fieldInterval;
+    public float fieldScale;
 
     public Vector2 fieldSize;
     public Vector2 fieldSize2;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: giveField
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   UpgradeImage: {fileID: 0}
-  upgradeText: Spawn a field every 2 seconds which damages enemies.
+  upgradeText: Spawn a field every 2 seconds which deals damage to enemies
   effectType: 4
   effectValue: 0
-  isUnique: 1
+  isUnique: 0

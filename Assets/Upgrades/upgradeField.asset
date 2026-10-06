@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef92716837b2dd14daf09cf359e822cc, type: 3}
-  m_Name: damageIncrease
-  m_EditorClassIdentifier: Assembly-CSharp::Upgrade
+  m_Name: upgradeField
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   UpgradeImage: {fileID: 0}
-  upgradeText: +5 Spear Damage
-  effectType: 0
-  effectValue: 5
+  upgradeText: Increase field size by 10% and damage by 1
+  effectType: 5
+  effectValue: 0
   isUnique: 0

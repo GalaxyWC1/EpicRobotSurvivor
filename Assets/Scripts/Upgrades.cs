@@ -18,5 +18,6 @@ public enum UpgradeEffect
     AttackSpeedIncrease,
     CooldownDecrease,
     GiveField,
+    UpgradeField,
 
 }

@@ -37,6 +37,7 @@ public class SpawnHitbox : MonoBehaviour
             GameObject newField = Instantiate(fieldObject);
             newField.GetComponent<fieldProjectile>().stats = stats;
             newField.transform.position = transform.position;
+            newField.gameObject.transform.localScale = Vector3.Scale(newField.gameObject.transform.localScale, new Vector3(stats.fieldScale, stats.fieldScale, stats.fieldScale));
             newField.transform.parent = transform;
         }
         if ((Time.realtimeSinceStartup - lastAttack) >= stats.attackTimer && stats.currentHealth > 0 && Time.timeScale > 0)

@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+//using Unity.VisualScripting;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
 
 public class SpawnController : MonoBehaviour
 {
@@ -12,6 +11,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] Vector2 spawnArea;
     public float spawnTime;
     private float lastSpawn;
+    private float addDamage;
+    private float addHealth;
 
     private GameObject clone;
 
@@ -24,6 +25,9 @@ public class SpawnController : MonoBehaviour
         newEnemy.GetComponent<EnemyController>().Target = Player;
         newEnemy.transform.position = position + Player.transform.position;
         newEnemy.transform.parent = transform;
+        newEnemy.GetComponent<Stats>().damage += addDamage;
+        newEnemy.GetComponent<Stats>().maxHealth += addHealth;
+        newEnemy.GetComponent<Stats>().currentHealth = newEnemy.GetComponent<Stats>().maxHealth;
     }
 
     private Vector3 GenerateRandomPosition()
@@ -66,10 +70,20 @@ public class SpawnController : MonoBehaviour
         if (Time.realtimeSinceStartup > 60 && spawnTime == 5)
         {
             spawnTime = 4;
+            addHealth = 10;
+            addDamage = 1;
         }
         else if (Time.realtimeSinceStartup > 120 && spawnTime == 4)
         {
             spawnTime = 3;
+            addHealth = 20;
+            addDamage = 1.5f;
+        }
+        else if (Time.realtimeSinceStartup > 180 && spawnTime == 3)
+        {
+            spawnTime = 2;
+            addHealth = 30;
+            addDamage = 2;
         }
     }
 

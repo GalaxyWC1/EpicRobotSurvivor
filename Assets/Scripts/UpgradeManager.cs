@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+//using UnityEditor;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
@@ -10,6 +10,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] Transform upgradePositionTwo;
     [SerializeField] Transform upgradePositionThree;
     [SerializeField] List<Upgrades> deck;
+    public Upgrades fieldSecond;
 
     GameObject upgradeOne;
     GameObject upgradeTwo;
@@ -96,6 +97,12 @@ public class UpgradeManager : MonoBehaviour
         else if (selectedUpgrade.effectType == UpgradeEffect.GiveField)
         {
             UpgradeManager.Instance.Player.GetComponent<Stats>().hasField = true;
+            deck[4] = fieldSecond;
+        }
+        else if (selectedUpgrade.effectType == UpgradeEffect.UpgradeField)
+        {
+            UpgradeManager.Instance.Player.GetComponent<Stats>().fieldScale *= 1.1f;
+            UpgradeManager.Instance.Player.GetComponent<Stats>().fieldDamage += 1f;
         }
 
         HideUpgradeSelection();

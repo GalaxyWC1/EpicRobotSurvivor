@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Stats))]
 public class TopDownMovement : MonoBehaviour
@@ -33,6 +34,7 @@ public class TopDownMovement : MonoBehaviour
         {
             Time.timeScale = 0;
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            SceneManager.LoadScene("Menu");
         }
 
         if (stats.xp >= stats.maxXp)

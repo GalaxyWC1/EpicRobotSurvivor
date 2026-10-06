@@ -30,7 +30,7 @@ public class fieldProjectile : MonoBehaviour
         RaycastHit2D[] hits;
         if (phase == 1)
         {
-            hits = Physics2D.BoxCastAll(transform.position, stats.fieldSize, 0, Vector2.zero, 0, attackLayer);
+            hits = Physics2D.BoxCastAll(transform.position, Vector3.Scale(stats.fieldSize, new Vector3(stats.fieldScale, stats.fieldScale, stats.fieldScale)), 0, Vector2.zero, 0, attackLayer);
             if (hits != null)
             {
                 for (int i = 0; i < hits.Length; i++)
@@ -41,7 +41,7 @@ public class fieldProjectile : MonoBehaviour
         }
         else if (phase == 2)
         {
-            hits = Physics2D.BoxCastAll(transform.position, stats.fieldSize2, 0, Vector2.zero, 0, attackLayer);
+            hits = Physics2D.BoxCastAll(transform.position, Vector3.Scale(stats.fieldSize2, new Vector3(stats.fieldScale, stats.fieldScale, stats.fieldScale)), 0, Vector2.zero, 0, attackLayer);
             if (hits != null)
             {
                 for (int i = 0; i < hits.Length; i++)
@@ -52,7 +52,7 @@ public class fieldProjectile : MonoBehaviour
         }
         else if (phase == 3)
         {
-            hits = Physics2D.BoxCastAll(transform.position, stats.fieldSize3, 0, Vector2.zero, 0, attackLayer);
+            hits = Physics2D.BoxCastAll(transform.position, Vector3.Scale(stats.fieldSize3, new Vector3(stats.fieldScale, stats.fieldScale, stats.fieldScale)), 0, Vector2.zero, 0, attackLayer);
             if (hits != null)
             {
                 for (int i = 0; i < hits.Length; i++)
